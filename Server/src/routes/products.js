@@ -4,17 +4,14 @@ import productService from "../services/productService";
 
 const router = Router();
 
-router.use((req, res, next) => {
-  console.log("Time: ", Date.now());
-  next();
-});
-
 /* GET filtered products listing. */
 router.get("/filter", async (req, res, next) => {
   let { q: searchTxt } = req.query;
   searchTxt = searchTxt.trim();
   try {
     let results = await productService.getFilteredByName(searchTxt);
+    console.log(util.inspect(results));
+    
     results =
       results.length === 0 ? await productService.getFilteredByBrand(searchTxt) : results;
     results =
