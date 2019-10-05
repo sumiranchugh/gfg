@@ -1,0 +1,56 @@
+version: "3"
+services:
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    container_name: es01
+    environment:
+      - node.name=es01
+      - discovery.seed_hosts=es01
+      - cluster.initial_master_nodes=es01
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+  client:
+    container_name: frontend
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    environment:
+      - REACT_APP_PORT=${REACT_APP_PORT}
+      - PORT=${REACT_APP_PORT}
+    expose:
+      - ${REACT_APP_PORT}
+    ports:
+      - ${REACT_APP_PORT}:${REACT_APP_PORT}
+    volumes:
+      - ./client/src:/usr/src/app/src
+      - ./client/public:/usr/src/app/public
+    links:
+      - server
+    command: npm run start
+  server:
+    container_name: server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    environment:
+      - API_HOST=${API_HOST}
+      - APP_SERVER_PORT=${APP_SERVER_PORT}
+      - PORT=${APP_SERVER_PORT}
+      - ELASTIC_IP=${ELASTIC_IP}
+      - LOGGER="combined"
+      - SHOW_ERR=true
+    expose:
+      - ${APP_SERVER_PORT}
+    ports:
+      - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
+    volumes:
+      - ./server/src:/usr/src/app/src
+    links:
+      - es01
