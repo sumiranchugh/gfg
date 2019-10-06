@@ -15,10 +15,10 @@ module.exports = {
   // cacheDirectory: "/private/var/folders/v4/3rdw1x6n4_3c4kn7glskds2c0000gp/T/jest_dy",
 
   // Automatically clear mock calls and instances between every test
-  clearMocks: true,
+  //   clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
-  // collectCoverage: false,
+  collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: null,
@@ -186,12 +186,12 @@ module.exports = {
   // Whether to use watchman for file crawling
   // watchman: true,
 
-  
-        "transform": {
-            "^.+\\.js$": "babel-jest"
-        },
-        "moduleNameMapper": {
-            "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-            "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
-        }
+  transform: {
+    "^.+\\.js$": "babel-jest"
+  },
+  moduleNameMapper: {
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+      "<rootDir>/__mocks__/fileMock.js",
+    "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
+  }
 };

@@ -4,7 +4,6 @@
 module.exports = {
   // All imported modules in your tests should be mocked automatically
    automock: false,
-
   // Stop running tests after `n` failures
   // bail: 0,
 
@@ -15,7 +14,7 @@ module.exports = {
   // cacheDirectory: "/private/var/folders/v4/3rdw1x6n4_3c4kn7glskds2c0000gp/T/jest_dy",
 
   // Automatically clear mock calls and instances between every test
-  clearMocks: true,
+  // clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
@@ -100,7 +99,7 @@ module.exports = {
   // reporters: undefined,
 
   // Automatically reset mock state between every test
-  // resetMocks: false,
+  //  resetMocks: true,
 
   // Reset the module registry before running each individual test
   // resetModules: false,
@@ -138,7 +137,7 @@ module.exports = {
   // testEnvironmentOptions: {},
 
   // Adds a location field to test results
-  // testLocationInResults: false,
+   testLocationInResults: true,
 
   // The glob patterns Jest uses to detect test files
   // testMatch: [

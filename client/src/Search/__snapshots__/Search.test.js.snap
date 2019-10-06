@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search render app with backend error 1`] = `ShallowWrapper {}`;
+
+exports[`Search render search with no text 1`] = `ShallowWrapper {}`;
+
+exports[`Search render search with text length greater than 3 1`] = `ReactWrapper {}`;
+
+exports[`render search with text length from more than  3 to 0 1`] = `ReactWrapper {}`;
+
+exports[`render search with text length less than equal 3 1`] = `ReactWrapper {}`;

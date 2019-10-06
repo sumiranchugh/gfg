@@ -4,8 +4,7 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import cors from "cors";
 import { showErr } from "./config";
-import productsRouter from "./routes/products";
-import { initDB } from "./utils/elasticUtil";
+import router from "./routes/routes";
 
 const app = express();
 
@@ -16,11 +15,7 @@ app.use(cookieParser());
 // app.use(express.static(join(__dirname, '../../client/build')));
 app.use(cors());
 
-app.get("/ll", (req, res) => {
-  initDB("mapping.json", "products.json");
-  res.send("hello");
-});
-app.use("/api/products", productsRouter);
+app.use("/api/products", router);
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));

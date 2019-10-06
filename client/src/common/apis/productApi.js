@@ -15,7 +15,12 @@ export const filterProductsAPI = (searchTxt, callback, errorCallback) => {
 
 export const fetchProductsAPI = (callback, errorCallback) => {
   fetch(PRODUCTS)
-    .then(res => res.json())
+    .then(res => {
+      if (res.status !== 200) {
+        throw new Error();
+      }
+      return res.json();
+    })
     .then(data => callback(data))
     .catch(err => {
       console.log(err);
