@@ -7,3 +7,5 @@
 1. `docker-compose up`
 2. run the curl commands in DBInit.sh to initialize data.
 
+### To run test cases
+1. run `npm run test` under Server and client respectively
